@@ -11,7 +11,7 @@ body:
     id: intro
     attributes:
       value: |
-        ## 🧹 Chore / Maintenance
+        ## Chore / Maintenance
         Utilise ce formulaire pour les tâches techniques, de configuration ou de nettoyage.
 
   - type: textarea
