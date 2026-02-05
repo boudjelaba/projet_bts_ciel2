@@ -1,29 +1,57 @@
-name: Question - Support
-description: "Poser une question ou demander clarification"
-title: "[BTS-XX] question: "
+name: Question
+description: Poser une question ou demander une clarification
+title: "[BTS-XX] Question : "
 labels:
   - question
-  - backlog
 assignees: []
 
 body:
   - type: markdown
+    id: intro
     attributes:
       value: |
-        ### Objectif
-        Décrire clairement la question ou le besoin de support.
+        ## Question
+        Utilise ce formulaire pour poser une question technique ou fonctionnelle.
 
   - type: textarea
+    id: context
     attributes:
-      label: Détails
-      description: Fournir toutes les informations nécessaires pour répondre
-      placeholder: >
+      label: Contexte
+      description: Donner le contexte de la question
+      placeholder: |
         Exemple :
-        * Version Python utilisée
-        * Étapes reproduisant le problème
+        Lors de l’implémentation de la CI, une question s’est posée sur la stratégie de versioning.
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Formuler clairement la question
+      placeholder: |
+        Exemple :
+        Faut-il utiliser semantic-release ou un versioning manuel ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempts
+    attributes:
+      label: Tentatives / Pistes explorées
+      description: Ce qui a déjà été essayé ou envisagé
+      placeholder: |
+        Exemple :
+        - Lecture de la documentation GitHub Actions
+        - Analyse des projets similaires
+    validations:
+      required: false
 
   - type: input
+    id: link
     attributes:
-      label: Lien
-      description: Lien vers issue ou PR associée
-      placeholder: Closes #22
+      label: Lien associé
+      description: Issue, PR ou documentation liée
+      placeholder: Related to #42
+    validations:
+      required: false
