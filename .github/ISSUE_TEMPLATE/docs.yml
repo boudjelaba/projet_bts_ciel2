@@ -27,8 +27,8 @@ body:
       label: Critères d’acceptation
       description: Pour considérer la documentation terminée
       options:
-        - "Documentation mise à jour"
-        - "Validée par un relecteur"
+        - label: Documentation mise à jour
+        - label: Validée par un relecteur
 
   - type: input
     attributes:
