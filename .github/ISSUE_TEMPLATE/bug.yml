@@ -38,9 +38,9 @@ body:
       label: Critères d’acceptation
       description: Pour considérer le bug résolu
       options:
-        - "Bug corrigé"
-        - "Tests unitaires passent"
-        - "CI verte"
+        - label: Bug corrigé
+        - label: Tests unitaires passent
+        - label: CI verte
 
   - type: dropdown
     attributes:
