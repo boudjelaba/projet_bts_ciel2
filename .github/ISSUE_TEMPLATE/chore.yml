@@ -27,9 +27,9 @@ body:
       label: Critères d’acceptation
       description: Liste les critères pour considérer la tâche terminée
       options:
-        - "CI exécute tests et lint"
-        - "Release automatique fonctionne"
-        - "Changelog généré"
+        - label: CI exécute tests et lint
+        - label: Release automatique fonctionne
+        - label: Changelog généré
 
   - type: textarea
     attributes:
