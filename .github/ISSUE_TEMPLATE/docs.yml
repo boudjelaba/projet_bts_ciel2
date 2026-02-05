@@ -1,37 +1,83 @@
 name: Documentation
-description: "Ajouter ou mettre à jour la documentation"
-title: "[BTS-XX] docs : "
+description: Ajouter ou mettre à jour la documentation
+title: "[BTS-XX] Docs : "
 labels:
-  - documentation
   - documentation
 assignees: []
 
 body:
   - type: markdown
+    id: intro
     attributes:
       value: |
-        ### Objectif
-        Décrire ce qui doit être documenté.
+        ## Documentation
+        Utilise ce formulaire pour créer, améliorer ou corriger la documentation.
 
   - type: textarea
+    id: objective
+    attributes:
+      label: Objectif
+      description: Décrire ce qui doit être documenté
+      placeholder: |
+        Exemple :
+        Ajouter la documentation d’installation et de configuration du projet.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
     attributes:
       label: Solution proposée
       description: Comment ajouter ou modifier la documentation
-      placeholder: >
+      placeholder: |
         Exemple :
-        * Mettre à jour README.md
-        * Ajouter guide d’utilisation pour `log_analyzer.py`
+        - Mettre à jour README.md
+        - Ajouter un guide d’utilisation pour `log_analyzer.py`
+        - Ajouter des exemples de configuration
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Portée / Fichiers concernés
+      description: Fichiers ou sections impactés
+      placeholder: |
+        Exemple :
+        - README.md
+        - docs/usage.md
+        - docs/installation.md
+    validations:
+      required: false
 
   - type: checkboxes
+    id: acceptance
     attributes:
       label: Critères d’acceptation
-      description: Pour considérer la documentation terminée
+      description: Conditions pour considérer la documentation terminée
       options:
         - label: Documentation mise à jour
         - label: Validée par un relecteur
+        - label: Exemples testés et fonctionnels
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Vérification
+      description: Comment vérifier la qualité de la documentation
+      placeholder: |
+        Exemple :
+        - Relecture par un pair
+        - Tests des commandes décrites
+        - Vérification des liens internes
+    validations:
+      required: false
 
   - type: input
+    id: link
     attributes:
-      label: Lien
-      description: Lien vers issue ou PR associée
+      label: Lien associé
+      description: Issue ou PR liée
       placeholder: Closes #25
+    validations:
+      required: false
