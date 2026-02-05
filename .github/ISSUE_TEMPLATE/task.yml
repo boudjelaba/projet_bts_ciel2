@@ -1,0 +1,38 @@
+name: Task - Tâche
+description: "Tâche technique ou administrative à réaliser"
+title: "[BTS-XX] task: "
+labels:
+  - task
+  - ready
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Objectif
+        Décrire la tâche à réaliser.
+
+  - type: textarea
+    attributes:
+      label: Solution proposée
+      description: Comment réaliser la tâche
+      placeholder: >
+        Exemple :
+        * Mettre à jour README.md
+        * Ajouter fichiers de configuration
+
+  - type: checkboxes
+    attributes:
+      label: Critères d’acceptation
+      description: Pour considérer la tâche terminée
+      options:
+        - "Tâche complétée"
+        - "Documentation mise à jour"
+        - "CI verte si nécessaire"
+
+  - type: input
+    attributes:
+      label: Lien
+      description: Lien vers issue ou PR associée
+      placeholder: Closes #20
