@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question générale
+    url: https://github.com/boudjelaba/projet_bts_ciel/discussions
+    about: Pour les questions ou idées générales
