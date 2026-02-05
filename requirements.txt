@@ -1,0 +1,8 @@
+distlib==0.4.0
+appdirs==1.4.4
+platformdirs==4.5.1
+pre_commit==4.5.1
+Pygments==2.19.2
+pytest==9.0.2
+PyYAML==6.0.3
+virtualenv==20.36.1

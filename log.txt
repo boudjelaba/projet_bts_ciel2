@@ -1,0 +1,7 @@
+INFO 2026-01-15 08:12:01 Démarrage du service
+INFO 2026-01-15 08:12:05 Connexion établie avec le serveur
+ERROR 2026-01-15 08:13:10 Échec d'authentification utilisateur
+INFO 2026-01-15 08:14:22 Nouvelle requête reçue
+WARNING 2026-01-15 08:15:03 Temps de réponse élevé
+ERROR 2026-01-15 08:16:47 Impossible d'accéder à la base de données
+INFO 2026-01-15 08:17:30 Arrêt du service
