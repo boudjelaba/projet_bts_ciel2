@@ -1,0 +1,59 @@
+name: Chore - Configuration / Maintenance
+description: "Tâches de maintenance, configuration CI/CD, ou nettoyage"
+title: "[BTS-XX] chore : "
+labels:
+  - chore
+  - ready
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Objectif
+        Décrire l'objectif de la tâche.
+
+  - type: textarea
+    attributes:
+      label: Solution proposée
+      description: Explique comment tu comptes résoudre cette tâche.
+      placeholder: >
+        Exemple :
+        * Mettre en place `.github/workflows/ci.yml`
+        * Ajouter tests + pre-commit + semantic-release
+
+  - type: checkboxes
+    attributes:
+      label: Critères d’acceptation
+      description: Liste les critères pour considérer la tâche terminée
+      options:
+        - "CI exécute tests et lint"
+        - "Release automatique fonctionne"
+        - "Changelog généré"
+
+  - type: textarea
+    attributes:
+      label: Tests / Validation
+      description: Décrire comment tester ou valider la tâche
+      placeholder: >
+        Exemple :
+        * Push sur `main`
+        * Vérifier action `CI - Tests Python BTS`
+
+  - type: markdown
+    attributes:
+      value: |
+        ### Livrable
+        Décrire ce qui sera livré ou modifié.
+
+  - type: markdown
+    attributes:
+      value: |
+        ### Notions
+        Indiquer les notions ou concepts impliqués.
+
+  - type: input
+    attributes:
+      label: Lien
+      description: Lien vers issue ou PR associée
+      placeholder: Closes #9
