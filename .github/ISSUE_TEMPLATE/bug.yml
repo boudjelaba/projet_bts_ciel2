@@ -1,4 +1,4 @@
-name: Bug - Correction
+name: "Bug - Correction"
 description: "Signaler un bug ou un comportement inattendu"
 title: "[BTS-XX] bug : "
 labels:
