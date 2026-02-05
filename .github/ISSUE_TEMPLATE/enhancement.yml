@@ -27,9 +27,9 @@ body:
       label: Critères d’acceptation
       description: Pour considérer l’amélioration terminée
       options:
-        - "Amélioration fonctionnelle"
-        - "Tests mis à jour"
-        - "CI verte"
+        - label: Amélioration fonctionnelle
+        - label: Tests mis à jour
+        - label: CI verte
 
   - type: input
     attributes:
