@@ -1,0 +1,58 @@
+name: Bug - Correction
+description: "Signaler un bug ou un comportement inattendu"
+title: "[BTS-XX] bug : "
+labels:
+  - bug
+  - ready
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Objectif
+        Décrire le bug rencontré.
+
+  - type: textarea
+    attributes:
+      label: Étapes pour reproduire
+      description: Décrire comment reproduire le bug
+      placeholder: >
+        Exemple :
+        1. Ouvrir le programme
+        2. Exécuter `main.py`
+        3. Observer l'erreur
+
+  - type: textarea
+    attributes:
+      label: Résultat attendu
+      description: Quel devrait être le comportement attendu
+
+  - type: textarea
+    attributes:
+      label: Résultat observé
+      description: Comportement réel constaté
+
+  - type: checkboxes
+    attributes:
+      label: Critères d’acceptation
+      description: Pour considérer le bug résolu
+      options:
+        - "Bug corrigé"
+        - "Tests unitaires passent"
+        - "CI verte"
+
+  - type: dropdown
+    attributes:
+      label: "Priorité"
+      options:
+        - P1 - Critique
+        - P2 - Important
+        - P3 - Moyen
+        - P4 - Faible
+
+  - type: input
+    attributes:
+      label: Lien
+      description: Lien vers issue ou PR associée
+      placeholder: Closes #12
