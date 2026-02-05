@@ -27,9 +27,9 @@ body:
       label: Critères d’acceptation
       description: Pour considérer la fonctionnalité terminée
       options:
-        - "Fonctionnalité implémentée"
-        - "Tests unitaires ajoutés"
-        - "CI verte"
+        - label: Fonctionnalité implémentée
+        - label: Tests unitaires ajoutés
+        - label: CI verte
 
   - type: input
     attributes:
