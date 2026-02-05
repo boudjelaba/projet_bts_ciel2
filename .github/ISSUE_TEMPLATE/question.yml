@@ -1,0 +1,29 @@
+name: Question - Support
+description: "Poser une question ou demander clarification"
+title: "[BTS-XX] question: "
+labels:
+  - question
+  - backlog
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Objectif
+        Décrire clairement la question ou le besoin de support.
+
+  - type: textarea
+    attributes:
+      label: Détails
+      description: Fournir toutes les informations nécessaires pour répondre
+      placeholder: >
+        Exemple :
+        * Version Python utilisée
+        * Étapes reproduisant le problème
+
+  - type: input
+    attributes:
+      label: Lien
+      description: Lien vers issue ou PR associée
+      placeholder: Closes #22
