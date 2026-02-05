@@ -1,6 +1,6 @@
-name: Enhancement - Amélioration
-description: "Proposer une amélioration d’une fonctionnalité existante"
-title: "[BTS-XX] enhancement: "
+name: Enhancement – Amélioration
+description: Proposer une amélioration d’une fonctionnalité existante
+title: "[BTS-XX] Enhancement : "
 labels:
   - enhancement
   - ready
@@ -8,31 +8,87 @@ assignees: []
 
 body:
   - type: markdown
+    id: intro
     attributes:
       value: |
-        ### Objectif
-        Décrire l’amélioration souhaitée.
+        ## Enhancement
+        Utilise ce formulaire pour proposer une amélioration d’une fonctionnalité existante.
 
   - type: textarea
+    id: objective
+    attributes:
+      label: Objectif
+      description: Décrire l’amélioration souhaitée
+      placeholder: |
+        Exemple :
+        Améliorer les performances et la robustesse de l’analyse des logs.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problème actuel
+      description: Limites ou problèmes de la fonctionnalité existante
+      placeholder: |
+        Exemple :
+        Le traitement est lent sur de gros volumes et les erreurs sont peu explicites.
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
     attributes:
       label: Solution proposée
       description: Comment améliorer la fonctionnalité
-      placeholder: >
+      placeholder: |
         Exemple :
-        * Optimiser la fonction `log_analyzer.py`
-        * Ajouter gestion des erreurs plus robuste
+        - Optimiser la fonction `log_analyzer.py`
+        - Ajouter une gestion des erreurs plus robuste
+        - Refactoriser certaines parties du code
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact attendu
+      description: Bénéfices de l’amélioration
+      placeholder: |
+        Exemple :
+        - Temps de traitement réduit
+        - Meilleure lisibilité des erreurs
+        - Maintenance facilitée
+    validations:
+      required: false
 
   - type: checkboxes
+    id: acceptance
     attributes:
       label: Critères d’acceptation
-      description: Pour considérer l’amélioration terminée
+      description: Conditions pour considérer l’amélioration terminée
       options:
         - label: Amélioration fonctionnelle
         - label: Tests mis à jour
         - label: CI verte
 
-  - type: input
+  - type: dropdown
+    id: priority
     attributes:
-      label: Lien
-      description: Lien vers issue ou PR associée
+      label: Priorité
+      description: Importance de l’amélioration
+      options:
+        - P1 – Haute
+        - P2 – Moyenne
+        - P3 – Basse
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Lien associé
+      description: Issue ou PR liée
       placeholder: Closes #18
+    validations:
+      required: false
