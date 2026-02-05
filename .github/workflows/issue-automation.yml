@@ -1,11 +1,11 @@
-name: Auto-move issues in project columns
+name: Issue Automation – Project Classic
 
 on:
   issues:
     types: [opened, labeled, unlabeled]
 
 permissions:
-  issues: read
+  issues: write
   projects: write
 
 jobs:
@@ -16,82 +16,124 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            // --- 1. Colonnes du projet ---
-            const columnIds = {
+            // ===================================
+            // 1. Colonnes du Project Classic
+            // ===================================
+            const COLUMNS = {
               backlog: 1111111,
-              ready: 2222222,
+              todo: 2222222,
               in_progress: 3333333,
               review: 4444444,
               documentation: 5555555,
               done: 6666666
             };
             
-            // --- 2. Ordre de priorité des labels (aligné BTS) ---
-            const priority = [
+            // ===================================
+            // 2. Mapping labels → colonnes
+            // ===================================
+            const STATUS_MAP = {
+              idea: COLUMNS.backlog,
+              enhancement: COLUMNS.backlog,
+            
+              ready: COLUMNS.todo,
+              bug: COLUMNS.todo,
+            
+              "in-progress": COLUMNS.in_progress,
+            
+              review: COLUMNS.review,
+              testing: COLUMNS.review,
+            
+              documentation: COLUMNS.documentation,
+            
+              done: COLUMNS.done
+            };
+            
+            // Labels considérés comme "statut"
+            const STATUS_LABELS = Object.keys(STATUS_MAP);
+            
+            const issue = context.payload.issue;
+            const issueNumber = issue.number;
+            const issueId = issue.id;
+            const labels = issue.labels.map(l => l.name);
+            
+            // ===================================
+            // 3. Déterminer le label prioritaire
+            // (ordre = du plus avancé au moins avancé)
+            // ===================================
+            const PRIORITY = [
               "done",
-              "in-progress",
-              "bug",
-              "feature",
-              "enhancement",
-              "task",
-              "chore",
               "documentation",
-              "question"
+              "review",
+              "testing",
+              "in-progress",
+              "ready",
+              "bug",
+              "enhancement",
+              "idea"
             ];
             
-            const issueNumber = context.payload.issue.number;
-            const issueId = context.payload.issue.id;
-            const issueLabels = context.payload.issue.labels.map(l => l.name);
+            const activeStatus = PRIORITY.find(l => labels.includes(l));
             
-            // --- 3. Sélection du label prioritaire ---
-            const selectedLabel = priority.find(label => issueLabels.includes(label));
-            
-            if (!selectedLabel) {
-              console.log(`Aucun label prioritaire pour l’issue #${issueNumber}`);
+            if (!activeStatus) {
+              console.log(`Issue #${issueNumber} : aucun label de statut`);
               return;
             }
             
-            // --- 4. Mapping label → colonne ---
-            const labelToColumn = {
-              done: columnIds.done,
-              "in-progress": columnIds.in_progress,
-              bug: columnIds.ready,
-              feature: columnIds.ready,
-              enhancement: columnIds.ready,
-              task: columnIds.ready,
-              chore: columnIds.ready,
-              documentation: columnIds.documentation,
-              question: columnIds.backlog
-            };
+            const targetColumnId = STATUS_MAP[activeStatus];
             
-            const targetColumnId = labelToColumn[selectedLabel];
-            if (!targetColumnId) return;
+            // ===================================
+            // 4. Nettoyage des autres labels de statut
+            // ===================================
+            for (const label of STATUS_LABELS) {
+              if (label !== activeStatus && labels.includes(label)) {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  name: label
+                });
+                console.log(`Label ${label} retiré de l’issue #${issueNumber}`);
+              }
+            }
             
-            // --- 5. Recherche de la carte existante ---
+            // ===================================
+            // 5. Recherche de la carte existante
+            // ===================================
             let existingCard = null;
             
-            for (const colId of Object.values(columnIds)) {
-              const { data: cards } = await github.rest.projects.listCards({ column_id: colId });
+            for (const columnId of Object.values(COLUMNS)) {
+              const { data: cards } = await github.rest.projects.listCards({
+                column_id: columnId
+              });
+            
               existingCard = cards.find(
-                c => c.content_url?.endsWith(`/issues/${issueNumber}`)
+                card => card.content_url?.endsWith(`/issues/${issueNumber}`)
               );
+            
               if (existingCard) break;
             }
             
-            // --- 6. Déplacer ou créer ---
+            // ===================================
+            // 6. Déplacer ou créer la carte
+            // ===================================
             if (existingCard) {
               await github.rest.projects.moveCard({
                 card_id: existingCard.id,
-                position: "top",
-                column_id: targetColumnId
+                column_id: targetColumnId,
+                position: "top"
               });
-              console.log(`Issue #${issueNumber} déplacée vers ${selectedLabel}`);
+              console.log(
+                `Issue #${issueNumber} déplacée vers ${activeStatus}`
+              );
             } else {
               await github.rest.projects.columns.createCard({
                 column_id: targetColumnId,
                 content_id: issueId,
                 content_type: "Issue"
               });
-              console.log(`Issue #${issueNumber} ajoutée à ${selectedLabel}`);
+              console.log(
+                `Issue #${issueNumber} ajoutée à ${activeStatus}`
+              );
             }
+
 
