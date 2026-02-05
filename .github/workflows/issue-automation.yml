@@ -20,12 +20,12 @@ jobs:
             // 1. Colonnes du Project Classic
             // ===================================
             const COLUMNS = {
-              backlog: 1111111,
-              todo: 2222222,
-              in_progress: 3333333,
-              review: 4444444,
-              documentation: 5555555,
-              done: 6666666
+              backlog: Y3Vyc29yOnYyOpLOD0ht56dCYWNrbG9n,
+              todo: Y3Vyc29yOnYyOpLOD0ht56RUb2Rv,
+              in_progress: Y3Vyc29yOnYyOpLOD0ht56tJbiBQcm9ncmVzcw==,
+              review: Y3Vyc29yOnYyOpLOD0ht561SZXZpZXcgLyBUZXN0,
+              documentation: Y3Vyc29yOnYyOpLOD0ht561Eb2N1bWVudGF0aW9u,
+              done: Y3Vyc29yOnYyOpLOD0ht56REb25l
             };
             
             // ===================================
