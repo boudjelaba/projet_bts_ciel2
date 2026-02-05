@@ -27,9 +27,9 @@ body:
       label: Critères d’acceptation
       description: Pour considérer la tâche terminée
       options:
-        - "Tâche complétée"
-        - "Documentation mise à jour"
-        - "CI verte si nécessaire"
+        - label: Tâche complétée
+        - label: Documentation mise à jour
+        - label: CI verte si nécessaire
 
   - type: input
     attributes:
