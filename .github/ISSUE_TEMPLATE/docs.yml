@@ -1,0 +1,37 @@
+name: Documentation
+description: "Ajouter ou mettre à jour la documentation"
+title: "[BTS-XX] docs : "
+labels:
+  - documentation
+  - documentation
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Objectif
+        Décrire ce qui doit être documenté.
+
+  - type: textarea
+    attributes:
+      label: Solution proposée
+      description: Comment ajouter ou modifier la documentation
+      placeholder: >
+        Exemple :
+        * Mettre à jour README.md
+        * Ajouter guide d’utilisation pour `log_analyzer.py`
+
+  - type: checkboxes
+    attributes:
+      label: Critères d’acceptation
+      description: Pour considérer la documentation terminée
+      options:
+        - "Documentation mise à jour"
+        - "Validée par un relecteur"
+
+  - type: input
+    attributes:
+      label: Lien
+      description: Lien vers issue ou PR associée
+      placeholder: Closes #25
