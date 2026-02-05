@@ -1,6 +1,6 @@
-name: Task - Tâche
-description: "Tâche technique ou administrative à réaliser"
-title: "[BTS-XX] task: "
+name: Task – Tâche
+description: Décrire une tâche simple ou transverse
+title: "[BTS-XX] Task : "
 labels:
   - task
   - ready
@@ -8,31 +8,74 @@ assignees: []
 
 body:
   - type: markdown
+    id: intro
     attributes:
       value: |
-        ### Objectif
-        Décrire la tâche à réaliser.
+        ## 🧩 Tâche
+        Utilise ce formulaire pour décrire une tâche simple, transverse ou non catégorisée.
 
   - type: textarea
+    id: objective
     attributes:
-      label: Solution proposée
-      description: Comment réaliser la tâche
-      placeholder: >
+      label: Objectif
+      description: Décrire l’objectif de la tâche
+      placeholder: |
         Exemple :
-        * Mettre à jour README.md
-        * Ajouter fichiers de configuration
+        Mettre à jour les dépendances du projet.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Détails sur la tâche à réaliser
+      placeholder: |
+        Exemple :
+        - Mettre à jour les versions dans requirements.txt
+        - Vérifier la compatibilité
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Portée / Impact
+      description: Composants ou fichiers concernés
+      placeholder: |
+        Exemple :
+        - Dépendances Python
+        - Pipeline CI
+    validations:
+      required: false
 
   - type: checkboxes
+    id: acceptance
     attributes:
       label: Critères d’acceptation
-      description: Pour considérer la tâche terminée
+      description: Conditions pour considérer la tâche terminée
       options:
-        - label: Tâche complétée
-        - label: Documentation mise à jour
-        - label: CI verte si nécessaire
+        - label: Tâche réalisée
+        - label: Aucun impact négatif constaté
+        - label: CI verte
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priorité
+      description: Importance de la tâche
+      options:
+        - P1 – Haute
+        - P2 – Moyenne
+        - P3 – Basse
+    validations:
+      required: true
 
   - type: input
+    id: link
     attributes:
-      label: Lien
-      description: Lien vers issue ou PR associée
-      placeholder: Closes #20
+      label: Lien associé
+      description: Issue ou PR liée
+      placeholder: Closes #30
+    validations:
+      required: false
