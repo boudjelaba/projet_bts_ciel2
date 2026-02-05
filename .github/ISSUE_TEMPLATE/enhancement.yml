@@ -1,0 +1,38 @@
+name: Enhancement - Amélioration
+description: "Proposer une amélioration d’une fonctionnalité existante"
+title: "[BTS-XX] enhancement: "
+labels:
+  - enhancement
+  - ready
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Objectif
+        Décrire l’amélioration souhaitée.
+
+  - type: textarea
+    attributes:
+      label: Solution proposée
+      description: Comment améliorer la fonctionnalité
+      placeholder: >
+        Exemple :
+        * Optimiser la fonction `log_analyzer.py`
+        * Ajouter gestion des erreurs plus robuste
+
+  - type: checkboxes
+    attributes:
+      label: Critères d’acceptation
+      description: Pour considérer l’amélioration terminée
+      options:
+        - "Amélioration fonctionnelle"
+        - "Tests mis à jour"
+        - "CI verte"
+
+  - type: input
+    attributes:
+      label: Lien
+      description: Lien vers issue ou PR associée
+      placeholder: Closes #18
